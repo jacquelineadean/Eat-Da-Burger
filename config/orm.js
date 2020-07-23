@@ -10,6 +10,7 @@ const orm = {
     selectAll: function(callback) {
         const queryAll = "SELECT * FROM " + tableName;
         connection.query(queryAll, function(err, result) {
+            if (err) throw err;
             callback(result);
         })
     },
