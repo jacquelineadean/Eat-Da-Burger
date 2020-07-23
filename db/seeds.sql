@@ -1,8 +1,8 @@
-INSERT INTO burgers (burger_name, devoured)
-VALUES ("ShackBurger", FALSE);
+INSERT INTO burgers (burger_name)
+VALUE ("ShackBurger");
 
-INSERT INTO burgers (burger_name, devoured)
-VALUES ("Hamburger", FALSE);
+INSERT INTO burgers (burger_name)
+VALUE ("Hamburger");
 
-INSERT INTO burgers (burger_name, devoured)
-VALUES ("'Shroom Burger", FALSE);
+INSERT INTO burgers (burger_name)
+VALUE ("'Shroom Burger");
