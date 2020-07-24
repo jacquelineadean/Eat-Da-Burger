@@ -7,22 +7,33 @@ const connection = require("./connection");
 const tableName = "burgers";
 
 const orm = {
+    // Select all burgers from table
     selectAll: function(callback) {
-        const queryAll = "SELECT * FROM " + tableName;
+        // Build query for all burgers
+        const queryAll = "SELECT * FROM " + tableName + ";";
+
+        // Connect query
         connection.query(queryAll, function(err, result) {
             if (err) throw err;
             callback(result);
         })
     },
+    // Create new burger for table
     insertOne: function(burgers, callback) {
-        const queryOne = "INSERT INTO" + tableName + " (burger_name) VALUE ?";
+        // Build query for adding burger
+        const queryOne = "INSERT INTO " + tableName + " (burger_name) VALUE ?";
+
+        // Connect query
         connection.query(queryOne, burgers.burger_name, function(err, result){
             if (err) throw err;
             callback(result);
         }) 
     },
+    // Update one burger
     updateOne: function(burgers, callback) {
-        const queryUpdate = "UPDATE " + tableName + " SET burger_name=? WHERE id=?";
+        // Build query to change `devoured` to true
+        const queryUpdate = "UPDATE " + tableName + " SET devoured = 1 WHERE id=?";
+        // Connect to query
         connection.query(queryUpdate, burgers.burger_name, function(err, result){
             if (err) throw err;
             callback(result);
