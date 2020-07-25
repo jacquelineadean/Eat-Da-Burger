@@ -24,7 +24,7 @@ const orm = {
         const queryOne = "INSERT INTO " + tableName + " (burger_name) VALUE ?";
 
         // Connect query
-        connection.query(queryOne, burgers.burger_name, function(err, result){
+        connection.query(queryOne, burgers.burger_name, function(err, result) {
             if (err) throw err;
             callback(result);
         }) 

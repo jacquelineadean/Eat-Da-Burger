@@ -1,0 +1,9 @@
+#burgersTitle {
+    text-align: center;
+}
+#burgersBackground {
+    background-image: url(../Website-banner_2.jpg); 
+    background-size: cover;
+    background-position: top right;
+    padding-bottom: 100px;
+}
