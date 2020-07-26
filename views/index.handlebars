@@ -16,7 +16,9 @@
                 <div class="card-body">
                     <h3 class="card-title" id="burgersTitle">Burgers</h5>
                     <ul class="card-text">
+                        <!--Handlebars 'each' helper to iterate an array -->
                         {{#each burgers}}
+                            <!--Handlebars 'unless' helper renders if the express returns a falsy value -->
                             {{#unless this.devoured}}
                                     <h5>{{this.id}}. {{this.burger_name}}
                                         <form action='burgers/updateOne/{{this.id}}?_method=PUT' method='POST'>
@@ -35,6 +37,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Burgers Devoured</h5>
                         {{#each burgers}}
+                            <!--Handlebars 'if' helper to conditionally render if the argument returns truthy value-->
                             {{#if this.devoured}}
                                 <h5 class="text-muted">{{this.id}}. {{this.burger_name}}</h5>
                             {{/if}}
