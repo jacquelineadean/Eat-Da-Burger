@@ -19,12 +19,15 @@ const orm = {
         })
     },
     // Create new burger for table
-    insertOne: function(burgers, callback) {
+    insertOne: function(req, callback) {
+        // Set body to 'burger_name'
+        const burger_name = req.body;
+
         // Build query for adding burger
         const queryOne = "INSERT INTO " + tableName + " (burger_name) VALUE ?";
 
         // Connect query
-        connection.query(queryOne, burgers.burger_name, function(err, result) {
+        connection.query(queryOne, burger_name, function(err, result) {
             if (err) throw err;
             callback(result);
         }) 

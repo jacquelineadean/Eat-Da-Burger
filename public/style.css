@@ -1,0 +1,21 @@
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
+#burgersTitle {
+    text-align: center;
+    color: aqua;
+}
+#burgersBackground {
+    background-image: url(Website-banner_2.jpg); 
+    background-size: cover;
+    background-position: top right;
+    padding-bottom: 100px;
+}

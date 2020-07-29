@@ -1,7 +1,7 @@
 // Dependencies
 // ===========================================================
 const express = require("express");
-const app = express();
+const app = express.Router();
 const Burger = require("../models/burger");
 
 
@@ -11,11 +11,11 @@ const Burger = require("../models/burger");
 // Default route
 app.get("/", function(req, res) {
     // Redirect to home page
-    res.redirect("/index");
+    res.redirect("/burgers");
 });
 
 // GET route for getting all of the burgers
-app.get("/index", function(req, res){
+app.get("/burgers", function(req, res){
     // Run Burger to show all burgers
     Burger.selectAll(data => {
         const allBurgers = {burgers: data};
@@ -29,18 +29,18 @@ app.post("/burgers/insertOne", function(req, res) {
     // Run Burger to add new burger
     Burger.insertOne("burger_name", req.body, () => {
         // Redirect to home page
-        res.redirect("/index");
+        res.redirect("/");
     })
 })
 
 // PUT route for updating burgers
-app.put("/burgers/updateOne/:id", (req, res) => {
+app.put("/burgers/:id", (req, res) => {
     // Define id as the selected id
-    const id = "id = " + req.params.id;
+    const id = req.params.id;
     // Run Burger to update the status of devoured
-    Burger.updateOne({devoured: req.body.devoured}, id, () => {
-        // Redirect to home page
-        res.redirect("/index");
+    Burger.updateOne(id, () => {
+        // Send back response and let page reload from .then in ajax
+        res.sendStatus(200);
     })
 })
 
