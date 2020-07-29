@@ -27,7 +27,8 @@ app.get("/burgers", function(req, res){
 // POST route for saving a new burger using the data on req.body
 app.post("/burgers/insertOne", function(req, res) {
     // Run Burger to add new burger
-    Burger.insertOne("burger_name", req.body, () => {
+    Burger.insertOne(req.body.burger_name, result => {
+        console.log(result);
         // Redirect to home page
         res.redirect("/");
     })
@@ -36,9 +37,10 @@ app.post("/burgers/insertOne", function(req, res) {
 // PUT route for updating burgers
 app.put("/burgers/:id", (req, res) => {
     // Define id as the selected id
-    const id = req.params.id;
+    let id = req.params.id;
     // Run Burger to update the status of devoured
-    Burger.updateOne(id, () => {
+    Burger.updateOne(id, result => {
+        console.log(result);
         // Send back response and let page reload from .then in ajax
         res.sendStatus(200);
     })

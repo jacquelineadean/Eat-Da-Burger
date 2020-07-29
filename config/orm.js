@@ -21,7 +21,7 @@ const orm = {
     // Create new burger for table
     insertOne: function(req, callback) {
         // Set body to 'burger_name'
-        const burger_name = req.body;
+        const burger_name = req.body.body;
 
         // Build query for adding burger
         const queryOne = "INSERT INTO " + tableName + " (burger_name) VALUE ?";
@@ -33,11 +33,11 @@ const orm = {
         }) 
     },
     // Update one burger
-    updateOne: function(burgers, callback) {
+    updateOne: function(condition, callback) {
         // Build query to change `devoured` to true
-        const queryUpdate = "UPDATE " + tableName + " SET devoured = 1 WHERE id=?";
+        const queryUpdate = "UPDATE " + tableName + " SET devoured = true WHERE " + condition + ";";
         // Connect to query
-        connection.query(queryUpdate, burgers.burger_name, function(err, result){
+        connection.query(queryUpdate, condition, function(err, result){
             if (err) throw err;
             callback(result);
         })

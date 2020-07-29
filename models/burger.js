@@ -13,14 +13,16 @@ const Burger = {
     },
 
     // insertOne function
-    insertOne: function(name, callback) {
-        orm.insertOne("burgers", "burger_name", name, callback);
+    insertOne: function(callback) {
+        orm.insertOne(function(data){
+            callback(data);
+        })
     },
 
     // updateOne function
     updateOne: function(id, callback){
         let condition = "id=" + id;
-        orm.updateOne("burgers", {devoured: true}, condition, callback);
+        orm.updateOne(condition, callback);
     }
     
 }
