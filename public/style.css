@@ -1,3 +1,6 @@
+.cool-font {
+    font-family: Shrikhand, cursive;
+  }
 .fill {
     display: flex;
     justify-content: center;
@@ -5,13 +8,14 @@
     overflow: hidden
 }
 .fill img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
+    position: center;
+    size: cover;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
 }
 #burgersTitle {
     text-align: center;
-    color: aqua;
 }
 #burgersBackground {
     background-image: url(Website-banner_2.jpg); 

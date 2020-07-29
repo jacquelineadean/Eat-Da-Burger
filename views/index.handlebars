@@ -1,68 +1,71 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="jumbotron jumbotron-fluid">
-                <div class="fill">
-                    <img src="/Shake-Shack.png" alt="logo">
-                </div>
-                <div class="container d-flex justify-content-center text-center">
-                    <h1 >Eat-Da-Burger!</h1>
-                </div>
-            </div>
-        </div>    
+<div class="row">
+    <div class="col-md-12">
+        <div class="fill">
+            <img src="/Shake-Shack.png" alt="logo">
+        </div>
     </div>
+</div>
 
-    <!-- Cards for list of burgers and burgers devoured-->
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title" id="burgersTitle">Burgers</h5>
-                    <ul class="card-text">
-                        <!--Handlebars 'each' helper to iterate an array -->
-                        {{#each burgers}}
-                            <!--Handlebars 'unless' helper renders if the express returns a falsy value -->
-                            {{#unless this.devoured}}
-                                    <h5>{{this.id}}. {{this.burger_name}}
-                                        <form class="devour-form button-size">
-                                            <input type='hidden' name='devoured' value={{this.id}}><button type='submit' class="btn btn-default">Devour it!</button>
-                                        </form>
-                                    </h5>
-                            {{/unless}}
-                        {{/each}}
-                    </ul>
+<div id="burgersBackground">
+    <br><br>
+    <!-- Add a burger -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 text-center">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="create-update-form cool-font" action="burgers/insertOne" method="POST">
+                            <div class="form-group">
+                                <p class="text-center cool-font">Add a burger you'd devour!</p>
+                                <textarea type="text" name="name"></textarea>
+                            </div>
+                            <button class="btn btn-success" type="submit">Add</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Burgers Devoured</h5>
-                        {{#each burgers}}
+        <br><br>
+
+        <!-- Cards for list of burgers and burgers devoured-->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title cool-font" id="burgersTitle">Burgers</h5>
+                            <ul class="card-text">
+                                <!--Handlebars 'each' helper to iterate an array -->
+                                {{#each burgers}}
+                                <!--Handlebars 'unless' helper renders if the express returns a falsy value -->
+                                {{#unless this.devoured}}
+                                <h5 class="cool-font">{{this.id}}. {{this.burger_name}}
+                                    <form class="devour-form button-size">
+                                        <input type='hidden' name='devoured' value={{this.id}}><button type='submit'
+                                            class="btn btn-default">Devour it!</button>
+                                    </form>
+                                </h5>
+                                {{/unless}}
+                                {{/each}}
+                            </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title cool-font text-center">Burgers Devoured</h5>
+                            {{#each burgers}}
                             <!--Handlebars 'if' helper to conditionally render if the argument returns truthy value-->
                             {{#if this.devoured}}
-                                <h5 class="text-muted">{{this.id}}. {{this.burger_name}}</h5>
+                            <h5 class="cool-font">{{this.id}}. {{this.burger_name}}</h5>
                             {{/if}}
-                        {{/each}}
+                            {{/each}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <br><br>
-
-    <!-- Add a burger -->
-    <div class="row">
-		<div class="col-md-12 text-center">
-			<form class="create-update-form" action="burgers/insertOne" method="POST">
-				<div class="form-group">
-                    <p class="text-center">Add a burger you'd devour!</p>
-					<textarea type="text" name="name"></textarea>
-                    <button class="btn btn-default" type="submit">Add Burger</button>
-				</div>
-			</form>
-		</div>
-	</div>
 
 </div>
